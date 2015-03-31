@@ -68,7 +68,7 @@ public class Controller implements Initializable {
         RulesComboBox.getSelectionModel().select(30);
         BoundaryRulesCombo.setItems(FXCollections.observableArrayList(new String[]{"Fixed-1", "Fixed-0", "Periodic", "Repeating", "Mirroring"}));
         BoundaryRulesCombo.getSelectionModel().select(2);
-        calenSlider.setMax(500); calenSlider.setMin(3); maxtimeSlider.setMax(500); maxtimeSlider.setMin(10);
+        calenSlider.setMax(200); calenSlider.setMin(3); maxtimeSlider.setMax(200); maxtimeSlider.setMin(10);
         zoomSlider.setMax(3.125); zoomSlider.setMin(0.125); zoomSlider.setValue(1);
         calenSlider.setValue(100); maxtimeSlider.setValue(100);
         CreateButton.setOnAction(event -> create());
