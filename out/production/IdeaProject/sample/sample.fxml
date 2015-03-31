@@ -302,12 +302,15 @@
               <content>
                 <AnchorPane>
                      <children>
-                        <Group AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Group>
                            <children>
-                              <Canvas fx:id="canvas" />
+                              <VBox fx:id="TimeVBox" visible="false">
+                                 <children>
+                                    <Canvas fx:id="canvas" />
+                                 </children>
+                              </VBox>
                            </children>
                         </Group>
-                        <VBox fx:id="TimeVBox" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
               </content>

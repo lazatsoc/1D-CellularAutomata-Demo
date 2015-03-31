@@ -1,12 +1,12 @@
 package sample;
 
-import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -65,10 +65,12 @@ public class Controller implements Initializable {
             int pos = 0;
             for (int i = bin.length - 1; i >= 0; i--) ruleBinProperty[pos++].setValue(bin[i] == '1');
         });
+        RulesComboBox.getSelectionModel().select(30);
         BoundaryRulesCombo.setItems(FXCollections.observableArrayList(new String[]{"Fixed-1", "Fixed-0", "Periodic", "Repeating", "Mirroring"}));
-        BoundaryRulesCombo.getSelectionModel().select(0);
+        BoundaryRulesCombo.getSelectionModel().select(2);
         calenSlider.setMax(500); calenSlider.setMin(3); maxtimeSlider.setMax(500); maxtimeSlider.setMin(10);
         zoomSlider.setMax(3.125); zoomSlider.setMin(0.125); zoomSlider.setValue(1);
+        calenSlider.setValue(100); maxtimeSlider.setValue(100);
         CreateButton.setOnAction(event -> create());
         StepButton.setOnAction(event -> step());
         RunButton.setOnAction(event -> run());
@@ -76,6 +78,9 @@ public class Controller implements Initializable {
 
     private void create() {
         canvas.setVisible(false);
+        canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        canvas.setHeight(0);
+        canvas.setWidth(0);
         TimeVBox.setVisible(true);
         steps=0;
         HBox cabox = new HBox();
